@@ -1,0 +1,7 @@
+name: BlockeyHockey
+version: ${project.version}
+main: com.blockeyhockey.plugin.BlockeyHockey
+api-version: 1.16
+authors: [ Flashee ]
+description: The Blockey Hockey plugin.
+website: https://www.blockeyhockey.com
