@@ -1,5 +1,6 @@
 package com.blockeyhockey.plugin;
 
+import com.blockeyhockey.utils.debugger.Debugger;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class BlockeyHockey extends JavaPlugin {
