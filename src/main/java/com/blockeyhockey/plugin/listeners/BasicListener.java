@@ -5,15 +5,21 @@ import com.blockeyhockey.plugin.player.HockeyPlayerManager;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.event.player.PlayerQuitEvent;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * The {@link Listener} class for basic events.
+ * @author harvanchik
+ * @since 01-13-2021
+ */
 public class BasicListener implements Listener {
 
     private final BlockeyHockey plugin;
     private final HockeyPlayerManager hockeyPlayerManager;
 
     /**
-     * Creates the basic listener class to listen for events.
+     * Constructs the {@link BasicListener} to listen for events.
      * @param plugin The plugin's main instance.
      */
     public BasicListener(@NotNull final BlockeyHockey plugin) {
@@ -25,6 +31,11 @@ public class BasicListener implements Listener {
     @EventHandler
     private void onPlayerJoin(PlayerJoinEvent e) {
         hockeyPlayerManager.createHockeyPlayer(e.getPlayer());
+    }
+
+    @EventHandler
+    private void onPlayerQuit(PlayerQuitEvent e) {
+        hockeyPlayerManager.removeHockeyPlayer(e.getPlayer().getUniqueId());
     }
 
 }
