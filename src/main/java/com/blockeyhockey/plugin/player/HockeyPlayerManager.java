@@ -58,4 +58,11 @@ public class HockeyPlayerManager {
                 DebugMessage.SUCCESS);
         }
     }
+
+    /**
+     * Remove all {@link HockeyPlayer}'s from the {@link HockeyPlayerManager}.
+     */
+    public void removeAllHockeyPlayers() {
+        hockeyPlayers.clear();
+    }
 }

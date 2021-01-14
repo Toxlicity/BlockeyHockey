@@ -27,6 +27,6 @@ public final class BlockeyHockey extends JavaPlugin {
 
     @Override
     public void onDisable() {
-
+        hockeyPlayerManager.removeAllHockeyPlayers();
     }
 }
