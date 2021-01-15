@@ -18,7 +18,7 @@ public class HockeyPlayerManager {
 
     private final BlockeyHockey plugin;
 
-    private HashMap<UUID, HockeyPlayer> hockeyPlayers;
+    private final HashMap<UUID, HockeyPlayer> hockeyPlayers;
 
     /**
      * Create the {@link HockeyPlayerManager}.
