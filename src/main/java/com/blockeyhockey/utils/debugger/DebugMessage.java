@@ -4,7 +4,7 @@ import org.bukkit.ChatColor;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * All of the {@link DebugMessage} types.
+ * All of the {@link DebugMessage} types for the {@link Debugger}.
  * @author harvanchik
  * @since 01-12-2021
  */
@@ -32,8 +32,8 @@ public enum DebugMessage {
     }
 
     /**
-     * Get the {@link DebugMessage}'s color.
-     * @return The {@link DebugMessage}'s color.
+     * Get the {@link DebugMessage}'s {@link ChatColor}.
+     * @return The {@link DebugMessage}'s {@link ChatColor}.
      */
     public ChatColor getColor() {
         return color;

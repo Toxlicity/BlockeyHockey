@@ -12,6 +12,8 @@ import org.jetbrains.annotations.NotNull;
  */
 public class Debugger {
 
+    private boolean isDebug;
+
     /**
      * Send an informative debug message in the chat and console.
      * @param message The debug message.
@@ -26,7 +28,7 @@ public class Debugger {
      * @param type The debug message type.
      */
     public static void debug(@NotNull final String message, @NotNull final DebugMessage type) {
-        Bukkit.broadcastMessage(
+        Bukkit.broadcastMessage(ChatColor.BOLD + "" +
                 ChatColor.GRAY + "[" + type.getColor() + type.getLabel() + ChatColor.GRAY + "] "
                  + ChatColor.RESET + message);
     }
@@ -45,8 +47,18 @@ public class Debugger {
      * @param type The debug message type.
      */
     public static void console(@NotNull final String message, @NotNull final DebugMessage type) {
-        System.out.println(
+        System.out.println(ChatColor.BOLD + "" +
                 ChatColor.GRAY + "[" + type.getColor() + type.getLabel() + ChatColor.GRAY + "] "
                  + ChatColor.RESET + message);
+    }
+
+    /**
+     * Toggle the debug status. It will become the opposite of what it currently is.
+     * @return The new status of the {@link Debugger}.
+     */
+    public boolean toggleDebug() {
+        isDebug = !isDebug;
+        debug("Debugger is now " + (isDebug ? "enabled" : "disabled") + "!", DebugMessage.INFO);
+        return isDebug;
     }
 }
