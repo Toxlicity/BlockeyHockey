@@ -9,6 +9,8 @@ import java.util.stream.Stream;
 
 /**
  * A hard-coded list of permissions.
+ * @author harvanchik
+ * @since 01-14-2021
  */
 public interface Permissions {
 

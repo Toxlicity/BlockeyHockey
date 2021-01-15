@@ -13,7 +13,7 @@ import app.ashcon.intake.Command;
  */
 public class Debugger {
 
-    private boolean isDebug;
+    private static boolean isDebug;
 
     /**
      * Send an informative debug message in the chat and console.
@@ -57,7 +57,7 @@ public class Debugger {
      * Toggle the debug status. It will become the opposite of what it currently is.
      * @return The new status of the {@link Debugger}.
      */
-    public boolean toggleDebug() {
+    public static boolean toggleDebug() {
         isDebug = !isDebug;
         debug("Debugger is now " + (isDebug ? "enabled" : "disabled") + "!", DebugMessage.INFO);
         return isDebug;
