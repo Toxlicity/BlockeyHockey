@@ -1,5 +1,8 @@
 package com.blockeyhockey.plugin;
 
+import app.ashcon.intake.bukkit.BukkitIntake;
+import app.ashcon.intake.bukkit.graph.BasicBukkitCommandGraph;
+import com.blockeyhockey.plugin.command.DebuggerCommand;
 import com.blockeyhockey.plugin.listeners.BasicListener;
 import com.blockeyhockey.plugin.player.HockeyPlayerManager;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -23,6 +26,13 @@ public final class BlockeyHockey extends JavaPlugin {
     @Override
     public void onEnable() {
         new BasicListener(this);
+    }
+
+    @Override
+    public void onLoad() {
+        BasicBukkitCommandGraph cmdGraph = new BasicBukkitCommandGraph();
+        cmdGraph.getRootDispatcherNode().registerCommands(new DebuggerCommand());
+        new BukkitIntake(this, cmdGraph).register();
     }
 
     @Override

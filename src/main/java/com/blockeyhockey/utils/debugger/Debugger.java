@@ -3,6 +3,7 @@ package com.blockeyhockey.utils.debugger;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.jetbrains.annotations.NotNull;
+import app.ashcon.intake.Command;
 
 /**
  * The {@link Debugger} has methods that will print out debug messages to chat and/or the server console.
