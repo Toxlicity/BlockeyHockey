@@ -25,8 +25,8 @@ public class GameClock {
      * @param minutes The amount of minutes to initialize the clock at.
      */
     public GameClock(long minutes) {
-        this.milliseconds = 0;
-        this.seconds = 0;
+        resetMilliseconds();
+        resetSeconds();
         this.minutes = minutes;
     }
 
@@ -36,7 +36,7 @@ public class GameClock {
      * @param minutes The amount of minutes to initialize the clock at.
      */
     public GameClock(final long seconds, final long minutes) {
-        this.milliseconds = 0;
+        resetMilliseconds();
         this.seconds = seconds;
         this.minutes = minutes;
     }
@@ -59,9 +59,9 @@ public class GameClock {
      * Reset the clock back to 00:00.000
      */
     public void resetClock() {
-        this.milliseconds = 0;
-        this.seconds = 0;
-        this.minutes = 0;
+        resetMilliseconds();
+        resetSeconds();
+        resetMinutes();
         stopClock();
     }
 
@@ -106,7 +106,7 @@ public class GameClock {
     }
 
     /**
-     * Reset the clock's milliseconds.
+     * Set milliseconds to zero.
      */
     public void resetMilliseconds() {
         this.milliseconds = 0;
@@ -145,7 +145,7 @@ public class GameClock {
     }
 
     /**
-     * Reset the clock's seconds.
+     * Set seconds to zero.
      */
     public void resetSeconds() {
         this.seconds = 0;
@@ -184,7 +184,7 @@ public class GameClock {
     }
 
     /**
-     * Reset the clock's minutes.
+     * Set minutes to zero.
      */
     public void resetMinutes() {
         this.minutes = 0;
