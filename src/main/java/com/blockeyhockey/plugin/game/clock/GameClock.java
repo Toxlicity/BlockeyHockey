@@ -24,7 +24,7 @@ public class GameClock {
      * Creates the {@link GameClock} starting at a specific amount of minutes.
      * @param minutes The amount of minutes to initialize the clock at.
      */
-    public GameClock(long minutes) {
+    public GameClock(final long minutes) {
         resetMilliseconds();
         resetSeconds();
         this.minutes = minutes;
@@ -85,23 +85,37 @@ public class GameClock {
      * Set the clock's milliseconds.
      * @param milliseconds The value to set milliseconds to.
      */
-    public void setMilliseconds(long milliseconds) {
+    public void setMilliseconds(final long milliseconds) {
         this.milliseconds = milliseconds;
     }
 
     /**
-     * Add milliseconds to the clock.
-     * @param milliseconds The amount of milliseconds to add.
+     * Increase milliseconds by one.
      */
-    public void addMilliseconds(long milliseconds) {
+    public void increaseMilliseconds() {
+        increaseMilliseconds(1);
+    }
+
+    /**
+     * Increment a specific amount of milliseconds to the clock.
+     * @param milliseconds The amount of milliseconds to increase.
+     */
+    public void increaseMilliseconds(final long milliseconds) {
         this.milliseconds += milliseconds;
     }
 
     /**
-     * Remove milliseconds from the clock.
-     * @param milliseconds The amount of milliseconds to remove.
+     * Decrease milliseconds by one.
      */
-    public void removeMilliseconds(long milliseconds) {
+    public void decreaseMilliseconds() {
+        decreaseMilliseconds(1);
+    }
+
+    /**
+     * Decrement a specific amount of milliseconds from the clock.
+     * @param milliseconds The amount of milliseconds to decrease.
+     */
+    public void decreaseMilliseconds(final long milliseconds) {
         this.milliseconds -= milliseconds;
     }
 
@@ -124,23 +138,37 @@ public class GameClock {
      * Set the clock's seconds.
      * @param seconds The value to set seconds to.
      */
-    public void setSeconds(long seconds) {
+    public void setSeconds(final long seconds) {
         this.seconds = seconds;
     }
 
     /**
-     * Add seconds to the clock.
-     * @param seconds The amount of seconds to add.
+     * Increase seconds by one.
      */
-    public void addSeconds(long seconds) {
+    public void increaseSeconds() {
+        increaseSeconds(1);
+    }
+
+    /**
+     * Increment a specific amount of seconds to the clock.
+     * @param seconds The amount of seconds to increase.
+     */
+    public void increaseSeconds(final long seconds) {
         this.seconds += seconds;
     }
 
     /**
-     * Remove seconds from the clock.
-     * @param seconds The amount of seconds to remove.
+     * Decrease milliseconds by one.
      */
-    public void removeSeconds(long seconds) {
+    public void decreaseSeconds() {
+        decreaseSeconds(1);
+    }
+
+    /**
+     * Decrement a specific amount of seconds from the clock.
+     * @param seconds The amount of seconds to decrease.
+     */
+    public void decreaseSeconds(final long seconds) {
         this.seconds -= seconds;
     }
 
@@ -163,23 +191,37 @@ public class GameClock {
      * Set the clock's minutes.
      * @param minutes The value to set minutes to.
      */
-    public void setMinutes(long minutes) {
+    public void setMinutes(final long minutes) {
         this.minutes = minutes;
     }
 
     /**
-     * Add minutes to the clock.
-     * @param minutes The amount of minutes to add.
+     * Increase minutes by one.
      */
-    public void addMinutes(long minutes) {
+    public void increaseMinutes() {
+        increaseMinutes(1);
+    }
+
+    /**
+     * Increment a specific amount of minutes to the clock.
+     * @param minutes The amount of minutes to increase.
+     */
+    public void increaseMinutes(final long minutes) {
         this.minutes += minutes;
     }
 
     /**
-     * Remove minutes from the clock.
-     * @param minutes The amount of minutes to remove.
+     * Decrease minutes by one.
      */
-    public void removeMinutes(long minutes) {
+    public void decreaseMinutes() {
+        decreaseMinutes(1);
+    }
+
+    /**
+     * Decrement a specific amount of minutes from the clock.
+     * @param minutes The amount of minutes to decrease.
+     */
+    public void decreaseMinutes(final long minutes) {
         this.minutes -= minutes;
     }
 
