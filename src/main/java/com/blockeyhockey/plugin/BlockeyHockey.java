@@ -2,6 +2,7 @@ package com.blockeyhockey.plugin;
 
 import app.ashcon.intake.bukkit.BukkitIntake;
 import app.ashcon.intake.bukkit.graph.BasicBukkitCommandGraph;
+import com.blockeyhockey.plugin.api.Permissions;
 import com.blockeyhockey.plugin.command.DebuggerCommand;
 import com.blockeyhockey.plugin.listeners.BasicListener;
 import com.blockeyhockey.plugin.player.HockeyPlayerManager;
@@ -25,6 +26,8 @@ public final class BlockeyHockey extends JavaPlugin {
 
     @Override
     public void onEnable() {
+        Permissions.registerAll();
+        // register listener classes
         new BasicListener(this);
     }
 
