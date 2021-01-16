@@ -1,5 +1,11 @@
 package com.blockeyhockey.plugin.game.clock;
 
+import com.blockeyhockey.plugin.BlockeyHockey;
+import com.blockeyhockey.utils.DurationParser;
+import org.bukkit.Bukkit;
+import org.bukkit.scheduler.BukkitTask;
+import org.jetbrains.annotations.NotNull;
+
 /**
  * The clock for the game.
  * @author harvanchik
@@ -7,38 +13,44 @@ package com.blockeyhockey.plugin.game.clock;
  */
 public class GameClock {
 
+    BlockeyHockey plugin;
+
+    private BukkitTask gameClockTask;
+
     private long milliseconds;
-    private long seconds;
-    private long minutes;
+//    private long seconds;
+//    private long minutes;
 
     private boolean isRunning = false;      // controls if the clock runs or not
 
     /**
      * Creates the {@link GameClock} starting at 00:00.000.
      */
-    public GameClock() {
+    public GameClock(@NotNull final BlockeyHockey plugin) {
+        this.plugin = plugin;
         resetClock();
     }
 
     /**
-     * Creates the {@link GameClock} starting at a specific amount of minutes.
-     * @param minutes The amount of minutes to initialize the clock at.
+     * Creates the {@link GameClock} starting at a specific time.
+     * @param duration The string duration to begin at (i.e. 5m).
      */
-    public GameClock(final long minutes) {
-        resetMilliseconds();
-        resetSeconds();
-        this.minutes = minutes;
+    public GameClock(@NotNull final BlockeyHockey plugin, @NotNull final String duration) {
+        milliseconds = DurationParser.parseDuration(duration);
     }
 
     /**
-     * Creates the {@link GameClock} starting at a specific amount of minutes and seconds.
-     * @param seconds The amount of seconds to initialize the clock at.
-     * @param minutes The amount of minutes to initialize the clock at.
+     * This method is what ticks the clock.  Every Minecraft tick, it runs.
      */
-    public GameClock(final long seconds, final long minutes) {
-        resetMilliseconds();
-        this.seconds = seconds;
-        this.minutes = minutes;
+    private void tick() {
+        gameClockTask = Bukkit.getScheduler().runTaskTimerAsynchronously(plugin, () -> {
+            // if time remains on the clock, continue to count down.
+            if (milliseconds > 0) {
+                milliseconds -= 50;     // subtract 50 milliseconds every tick
+            } else {
+                // clock reached zero
+            }
+        }, 0L, 0L);
     }
 
     /**
@@ -56,12 +68,34 @@ public class GameClock {
     }
 
     /**
+     * Set the clock's time.
+     * @param duration The string duration (i.e. 5m30s).
+     */
+    public void setTime(String duration) {
+        milliseconds = DurationParser.parseDuration(duration);
+    }
+
+    /**
+     * Add to the current clock's time.
+     * @param duration The string duration (i.e. 25s).
+     */
+    public void addTime(String duration) {
+        milliseconds += DurationParser.parseDuration(duration);
+    }
+
+    /**
+     * Remove from the current clock's time.
+     * @param duration The string duration (i.e. 1m5s).
+     */
+    public void removeTime(String duration) {
+        milliseconds -= DurationParser.parseDuration(duration);
+    }
+
+    /**
      * Reset the clock back to 00:00.000
      */
     public void resetClock() {
-        resetMilliseconds();
-        resetSeconds();
-        resetMinutes();
+//        resetMilliseconds();
         stopClock();
     }
 
@@ -74,161 +108,9 @@ public class GameClock {
     }
 
     /**
-     * Returns the current milliseconds on the clock.
-     * @return the current milliseconds.
-     */
-    public long getMilliseconds() {
-        return milliseconds;
-    }
-
-    /**
-     * Set the clock's milliseconds.
-     * @param milliseconds The value to set milliseconds to.
-     */
-    public void setMilliseconds(final long milliseconds) {
-        this.milliseconds = milliseconds;
-    }
-
-    /**
-     * Increase milliseconds by one.
-     */
-    public void increaseMilliseconds() {
-        increaseMilliseconds(1);
-    }
-
-    /**
-     * Increment a specific amount of milliseconds to the clock.
-     * @param milliseconds The amount of milliseconds to increase.
-     */
-    public void increaseMilliseconds(final long milliseconds) {
-        this.milliseconds += milliseconds;
-    }
-
-    /**
-     * Decrease milliseconds by one.
-     */
-    public void decreaseMilliseconds() {
-        decreaseMilliseconds(1);
-    }
-
-    /**
-     * Decrement a specific amount of milliseconds from the clock.
-     * @param milliseconds The amount of milliseconds to decrease.
-     */
-    public void decreaseMilliseconds(final long milliseconds) {
-        this.milliseconds -= milliseconds;
-    }
-
-    /**
      * Set milliseconds to zero.
      */
     public void resetMilliseconds() {
         this.milliseconds = 0;
-    }
-
-    /**
-     * Returns the current seconds on the clock.
-     * @return the current seconds.
-     */
-    public long getSeconds() {
-        return seconds;
-    }
-
-    /**
-     * Set the clock's seconds.
-     * @param seconds The value to set seconds to.
-     */
-    public void setSeconds(final long seconds) {
-        this.seconds = seconds;
-    }
-
-    /**
-     * Increase seconds by one.
-     */
-    public void increaseSeconds() {
-        increaseSeconds(1);
-    }
-
-    /**
-     * Increment a specific amount of seconds to the clock.
-     * @param seconds The amount of seconds to increase.
-     */
-    public void increaseSeconds(final long seconds) {
-        this.seconds += seconds;
-    }
-
-    /**
-     * Decrease milliseconds by one.
-     */
-    public void decreaseSeconds() {
-        decreaseSeconds(1);
-    }
-
-    /**
-     * Decrement a specific amount of seconds from the clock.
-     * @param seconds The amount of seconds to decrease.
-     */
-    public void decreaseSeconds(final long seconds) {
-        this.seconds -= seconds;
-    }
-
-    /**
-     * Set seconds to zero.
-     */
-    public void resetSeconds() {
-        this.seconds = 0;
-    }
-
-    /**
-     * Returns the current minutes on the clock.
-     * @return the current minutes.
-     */
-    public long getMinutes() {
-        return minutes;
-    }
-
-    /**
-     * Set the clock's minutes.
-     * @param minutes The value to set minutes to.
-     */
-    public void setMinutes(final long minutes) {
-        this.minutes = minutes;
-    }
-
-    /**
-     * Increase minutes by one.
-     */
-    public void increaseMinutes() {
-        increaseMinutes(1);
-    }
-
-    /**
-     * Increment a specific amount of minutes to the clock.
-     * @param minutes The amount of minutes to increase.
-     */
-    public void increaseMinutes(final long minutes) {
-        this.minutes += minutes;
-    }
-
-    /**
-     * Decrease minutes by one.
-     */
-    public void decreaseMinutes() {
-        decreaseMinutes(1);
-    }
-
-    /**
-     * Decrement a specific amount of minutes from the clock.
-     * @param minutes The amount of minutes to decrease.
-     */
-    public void decreaseMinutes(final long minutes) {
-        this.minutes -= minutes;
-    }
-
-    /**
-     * Set minutes to zero.
-     */
-    public void resetMinutes() {
-        this.minutes = 0;
     }
 }

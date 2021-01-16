@@ -1,7 +1,10 @@
 package com.blockeyhockey.plugin.game.period;
 
-import com.blockeyhockey.plugin.game.GamePhase;
-
+/**
+ * The {@link PeriodManager} manages the period of the game.
+ * @author harvanchik
+ * @since 01-15-2021
+ */
 public class PeriodManager {
 
     private int period;

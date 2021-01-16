@@ -1,5 +1,10 @@
 package com.blockeyhockey.plugin.game;
 
+/**
+ * All of the different phases a game can be in.
+ * @author harvanchik
+ * @since 01-16-2021
+ */
 public enum GamePhase {
 
     /**
