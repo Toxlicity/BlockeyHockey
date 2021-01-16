@@ -1,6 +1,10 @@
 package com.blockeyhockey.plugin.game.period;
 
+import com.blockeyhockey.plugin.game.GamePhase;
+
 public class PeriodManager {
+
+    private GamePhase gamePhase;
 
     private int period;
     private boolean isIntermission = false;
@@ -10,6 +14,7 @@ public class PeriodManager {
      */
     public PeriodManager() {
         this.period = 0;
+        this.gamePhase = GamePhase.PREGAME;
     }
 
     /**
@@ -18,6 +23,7 @@ public class PeriodManager {
      */
     public PeriodManager(int period) {
         this.period = period;
+        this.gamePhase = (period > 0) ? GamePhase.IDLE : GamePhase.PREGAME;
     }
 
     /**
