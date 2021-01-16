@@ -15,6 +15,8 @@ public class HockeyPlayer {
 
     private final Player player;
 
+    private int stickPower;     // the player's stick power (1-3)
+
     /**
      * Creates a {@link HockeyPlayer}.
      * @param player The {@link Player} to create the {@link HockeyPlayer} with.
