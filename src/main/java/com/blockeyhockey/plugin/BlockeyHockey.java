@@ -33,7 +33,12 @@ public final class BlockeyHockey extends JavaPlugin {
 
     @Override
     public void onLoad() {
+        registerCommands();
+    }
+
+    private void registerCommands() {
         BasicBukkitCommandGraph cmdGraph = new BasicBukkitCommandGraph();
+        // all of the commands to register
         cmdGraph.getRootDispatcherNode().registerCommands(new DebuggerCommand());
         new BukkitIntake(this, cmdGraph).register();
     }

@@ -7,10 +7,8 @@ package com.blockeyhockey.plugin.stick;
  */
 public abstract class HockeyStick {
 
-    // the color of the hockey stick
-    StickColor color;
+    StickColor color;       // the color of the hockey stick
+    int stickPower;         // the power of the stick (knockback)
 
     public abstract int cycle();
-
-//    public abstract void shootPuck();
 }
