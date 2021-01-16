@@ -10,9 +10,24 @@ import org.jetbrains.annotations.NotNull;
  */
 public enum DebugMessage {
 
+    /**
+     * A message to provide information about something that happened.
+     */
     INFO("INFO", ChatColor.BLUE),
+
+    /**
+     * A message to indicate a successful action or that the code successfully reached a point.
+     */
     SUCCESS("SUCCESS", ChatColor.GREEN),
+
+    /**
+     * A message to warn that something has gone wrong or that code was reached that should not have been.
+     */
     WARNING("WARN", ChatColor.YELLOW),
+
+    /**
+     * A message to indicate that an error occurred, usually placed in a catch statement.
+     */
     ERROR("ERROR", ChatColor.RED);
 
     private final String label;

@@ -20,6 +20,9 @@ public class HockeyGameManager {
 
     public HockeyGameManager(BlockeyHockey plugin) {
         this.plugin = plugin;
+        this.periodManager = new PeriodManager();
+        this.gameClock = new GameClock();
+        this.gamePhase = GamePhase.PREGAME;
     }
 
 
