@@ -35,7 +35,7 @@ public class GameClock {
      * @param seconds The amount of seconds to initialize the clock at.
      * @param minutes The amount of minutes to initialize the clock at.
      */
-    public GameClock(long seconds, long minutes) {
+    public GameClock(final long seconds, final long minutes) {
         this.milliseconds = 0;
         this.seconds = seconds;
         this.minutes = minutes;
@@ -90,6 +90,29 @@ public class GameClock {
     }
 
     /**
+     * Add milliseconds to the clock.
+     * @param milliseconds The amount of milliseconds to add.
+     */
+    public void addMilliseconds(long milliseconds) {
+        this.milliseconds += milliseconds;
+    }
+
+    /**
+     * Remove milliseconds from the clock.
+     * @param milliseconds The amount of milliseconds to remove.
+     */
+    public void removeMilliseconds(long milliseconds) {
+        this.milliseconds -= milliseconds;
+    }
+
+    /**
+     * Reset the clock's milliseconds.
+     */
+    public void resetMilliseconds() {
+        this.milliseconds = 0;
+    }
+
+    /**
      * Returns the current seconds on the clock.
      * @return the current seconds.
      */
@@ -106,6 +129,29 @@ public class GameClock {
     }
 
     /**
+     * Add seconds to the clock.
+     * @param seconds The amount of seconds to add.
+     */
+    public void addSeconds(long seconds) {
+        this.seconds += seconds;
+    }
+
+    /**
+     * Remove seconds from the clock.
+     * @param seconds The amount of seconds to remove.
+     */
+    public void removeSeconds(long seconds) {
+        this.seconds -= seconds;
+    }
+
+    /**
+     * Reset the clock's seconds.
+     */
+    public void resetSeconds() {
+        this.seconds = 0;
+    }
+
+    /**
      * Returns the current minutes on the clock.
      * @return the current minutes.
      */
@@ -119,5 +165,28 @@ public class GameClock {
      */
     public void setMinutes(long minutes) {
         this.minutes = minutes;
+    }
+
+    /**
+     * Add minutes to the clock.
+     * @param minutes The amount of minutes to add.
+     */
+    public void addMinutes(long minutes) {
+        this.minutes += minutes;
+    }
+
+    /**
+     * Remove minutes from the clock.
+     * @param minutes The amount of minutes to remove.
+     */
+    public void removeMinutes(long minutes) {
+        this.minutes -= minutes;
+    }
+
+    /**
+     * Reset the clock's minutes.
+     */
+    public void resetMinutes() {
+        this.minutes = 0;
     }
 }
