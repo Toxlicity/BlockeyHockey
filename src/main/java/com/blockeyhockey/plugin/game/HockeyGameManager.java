@@ -15,6 +15,7 @@ public class HockeyGameManager {
 
     PeriodManager periodManager;        // this manages the game's period
     GameClock gameClock;                // this manages the game time
+    GamePhase gamePhase;                // the phase of the game
 
 
     public HockeyGameManager(BlockeyHockey plugin) {
