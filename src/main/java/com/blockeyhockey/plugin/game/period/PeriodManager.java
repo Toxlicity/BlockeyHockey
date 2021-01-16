@@ -3,6 +3,7 @@ package com.blockeyhockey.plugin.game.period;
 public class PeriodManager {
 
     private int period;
+    private boolean isIntermission = false;
 
     /**
      * Creates a {@link PeriodManager} starting a period zero.
@@ -70,5 +71,21 @@ public class PeriodManager {
      */
     public void reset() {
         period = 0;
+    }
+
+    /**
+     * Returns if the game is in intermission.
+     * @return true if in intermission, false if not in intermission.
+     */
+    public boolean isIntermission() {
+        return isIntermission;
+    }
+
+    /**
+     * Set the state of the intermission.
+     * @param intermission A boolean setting the state of the intermission.
+     */
+    public void setIntermission(boolean intermission) {
+        isIntermission = intermission;
     }
 }
