@@ -6,6 +6,8 @@ import org.bukkit.Bukkit;
 import org.bukkit.scheduler.BukkitTask;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.concurrent.TimeUnit;
+
 /**
  * The clock for the game.
  * @author harvanchik
@@ -76,6 +78,14 @@ public class GameClock {
     }
 
     /**
+     * Returns the current milliseconds on the clock.
+     * @return the current milliseconds.
+     */
+    public long getTime() {
+        return milliseconds;
+    }
+
+    /**
      * Add to the current clock's time.
      * @param duration The string duration (i.e. 25s).
      */
@@ -95,8 +105,28 @@ public class GameClock {
      * Reset the clock back to 00:00.000
      */
     public void resetClock() {
-//        resetMilliseconds();
+        milliseconds = 0;
         stopClock();
+    }
+
+    /**
+     * Returns the clock's current time in a timestamp format.
+     * @return the string of the clock's time.
+     */
+    public String getFormattedTime() {
+        long milliseconds = this.milliseconds;
+
+        long minutes = (milliseconds / 1000) / 60;
+        long seconds = (milliseconds / 1000) % 60;
+        milliseconds -= ((minutes * 60 * 1000) + (seconds * 60));
+
+        // if under 1 minute with less than 10 seconds
+        if (minutes <= 0 && seconds <= 9) {
+            return (minutes + ":" + seconds + "." + milliseconds);
+        } else {
+            return (minutes + ":" + seconds);
+        }
+
     }
 
     /**
@@ -105,12 +135,5 @@ public class GameClock {
      */
     public boolean isRunning() {
         return isRunning;
-    }
-
-    /**
-     * Set milliseconds to zero.
-     */
-    public void resetMilliseconds() {
-        this.milliseconds = 0;
     }
 }
