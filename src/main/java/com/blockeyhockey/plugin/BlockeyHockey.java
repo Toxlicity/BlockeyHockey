@@ -18,23 +18,23 @@ import org.bukkit.plugin.java.JavaPlugin;
  */
 public final class BlockeyHockey extends JavaPlugin {
 
-    public final HockeyPlayerManager hockeyPlayerManager;
-    public final RinkManager rinkManager;
+    public HockeyPlayerManager hockeyPlayerManager;
+    public RinkManager rinkManager;
 
-    /**
-     * The constructor for the main instance.
-     */
-    public BlockeyHockey() {
-        this.hockeyPlayerManager = new HockeyPlayerManager(this);
-        this.rinkManager = new RinkManager(this);
-    }
+    private int numErrors = 0;
 
     @Override
     public void onEnable() {
+        // configuration
+        loadConfig();
+        // create manager classes
+        hockeyPlayerManager = new HockeyPlayerManager(this);
+        rinkManager = new RinkManager(this);
+        // register permissions
         Permissions.registerAll();
         // register listener classes
         new BasicListener(this);
-        Debugger.console("Plugin loaded successfully!", DebugMessage.SUCCESS);
+        printLoadedMessage();
     }
 
     @Override
@@ -42,11 +42,41 @@ public final class BlockeyHockey extends JavaPlugin {
         registerCommands();
     }
 
+    /**
+     * Register all of the commands.
+     */
     private void registerCommands() {
         BasicBukkitCommandGraph cmdGraph = new BasicBukkitCommandGraph();
         // all of the commands to register
         cmdGraph.getRootDispatcherNode().registerCommands(new DebuggerCommand());
         new BukkitIntake(this, cmdGraph).register();
+    }
+
+    /**
+     * Load the default configuration file.
+     */
+    private void loadConfig() {
+        try {
+            saveDefaultConfig();
+        } catch (Exception e) {
+            numErrors++;
+            Debugger.debug("There was an error loading the config! Unable to set up rinks.", DebugMessage.ERROR);
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Print a {@link Debugger} message on the status of the plugin.
+     * It will print a success message if no errors were found in the start up of the plugin.
+     * It will print a warning message with the number of errors detected if errors were caught in the start up of
+     * the plugin.
+     */
+    private void printLoadedMessage() {
+        if (numErrors < 1) {
+            Debugger.debug("Plugin loaded successfully!", DebugMessage.SUCCESS);
+        } else {
+            Debugger.debug("Plugin loaded with " + numErrors + " error(s). See stack traces.", DebugMessage.WARNING);
+        }
     }
 
     @Override
