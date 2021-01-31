@@ -20,8 +20,6 @@ public class GameClock {
     private BukkitTask gameClockTask;
 
     private long milliseconds;
-//    private long seconds;
-//    private long minutes;
 
     private boolean isRunning = false;      // controls if the clock runs or not
 
