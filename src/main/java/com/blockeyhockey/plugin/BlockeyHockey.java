@@ -6,6 +6,9 @@ import com.blockeyhockey.plugin.api.Permissions;
 import com.blockeyhockey.plugin.command.DebuggerCommand;
 import com.blockeyhockey.plugin.listeners.BasicListener;
 import com.blockeyhockey.plugin.player.HockeyPlayerManager;
+import com.blockeyhockey.plugin.rink.RinkManager;
+import com.blockeyhockey.utils.debugger.DebugMessage;
+import com.blockeyhockey.utils.debugger.Debugger;
 import org.bukkit.plugin.java.JavaPlugin;
 
 /**
@@ -16,12 +19,14 @@ import org.bukkit.plugin.java.JavaPlugin;
 public final class BlockeyHockey extends JavaPlugin {
 
     public final HockeyPlayerManager hockeyPlayerManager;
+    public final RinkManager rinkManager;
 
     /**
      * The constructor for the main instance.
      */
     public BlockeyHockey() {
         this.hockeyPlayerManager = new HockeyPlayerManager(this);
+        this.rinkManager = new RinkManager(this);
     }
 
     @Override
@@ -29,6 +34,7 @@ public final class BlockeyHockey extends JavaPlugin {
         Permissions.registerAll();
         // register listener classes
         new BasicListener(this);
+        Debugger.console("Plugin loaded successfully!", DebugMessage.SUCCESS);
     }
 
     @Override

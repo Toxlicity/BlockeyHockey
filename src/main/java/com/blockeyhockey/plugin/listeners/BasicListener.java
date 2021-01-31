@@ -2,8 +2,10 @@ package com.blockeyhockey.plugin.listeners;
 
 import com.blockeyhockey.plugin.BlockeyHockey;
 import com.blockeyhockey.plugin.player.HockeyPlayerManager;
+import org.bukkit.Material;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.block.BlockFadeEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.jetbrains.annotations.NotNull;
@@ -36,6 +38,19 @@ public class BasicListener implements Listener {
     @EventHandler
     private void onPlayerQuit(PlayerQuitEvent e) {
         hockeyPlayerManager.removeHockeyPlayer(e.getPlayer().getUniqueId());
+    }
+
+    /**
+     * Event called when block fades, melts, decays, etc.
+     * Stop frosted ice from melting.
+     * @param e The {@link BlockFadeEvent}.
+     */
+    @EventHandler
+    private void onBlockFade(BlockFadeEvent e) {
+        Material block = e.getBlock().getType();
+        if (block == Material.FROSTED_ICE) {
+            e.setCancelled(true);
+        }
     }
 
 }

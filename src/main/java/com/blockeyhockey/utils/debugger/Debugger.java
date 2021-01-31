@@ -31,7 +31,8 @@ public class Debugger {
     public static void debug(@NotNull final String message, @NotNull final DebugMessage type) {
         Bukkit.broadcastMessage(ChatColor.BOLD + "" +
                 ChatColor.GRAY + "[" + type.getColor() + type.getLabel() + ChatColor.GRAY + "] "
-                 + ChatColor.RESET + message);
+                 + type.getColor() + message);
+        Debugger.console(message, type);
     }
 
     /**
@@ -50,7 +51,7 @@ public class Debugger {
     public static void console(@NotNull final String message, @NotNull final DebugMessage type) {
         System.out.println(ChatColor.BOLD + "" +
                 ChatColor.GRAY + "[" + type.getColor() + type.getLabel() + ChatColor.GRAY + "] "
-                 + ChatColor.RESET + message);
+                 + type.getColor() + message);
     }
 
     /**
