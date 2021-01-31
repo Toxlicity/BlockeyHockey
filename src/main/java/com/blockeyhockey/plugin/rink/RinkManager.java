@@ -20,12 +20,19 @@ public class RinkManager {
 
     private final ConfigurationSection RINKS_CONFIG;
 
+    /**
+     * Create the {@link RinkManager} and get the configuration section for rinks.
+     * @param plugin The plugin's main instance.
+     */
     public RinkManager(BlockeyHockey plugin) {
         this.plugin = plugin;
         this.RINKS_CONFIG = plugin.getConfig().getConfigurationSection("rinks");
         constructRinks();
     }
 
+    /**
+     * Construct the {@link Rink}s based on the values from the configuration.
+     */
     private void constructRinks() {
         if (RINKS_CONFIG != null) {
             for (String key : RINKS_CONFIG.getKeys(false)) {
