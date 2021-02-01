@@ -1,10 +1,9 @@
 package com.blockeyhockey.plugin.command;
 
 import app.ashcon.intake.Command;
-import com.blockeyhockey.plugin.Puck.Puck;
+import com.blockeyhockey.plugin.puck.Puck;
 import com.blockeyhockey.plugin.api.Permissions;
 import org.bukkit.command.CommandSender;
-import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 
 public class PuckCommand {

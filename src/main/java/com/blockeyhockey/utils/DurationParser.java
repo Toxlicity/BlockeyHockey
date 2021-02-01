@@ -46,6 +46,7 @@ public class DurationParser {
             switch (typ) {
                 case "l":
                     instant = instant.plusMillis(num);
+                    break;
                 case "s":
                     instant = instant.plus(Duration.ofSeconds(num));
                     break;
@@ -54,7 +55,6 @@ public class DurationParser {
                     break;
                 case "h":
                     instant = instant.plus(Duration.ofHours(num));
-                    break;
             }
         }
         return instant.toEpochMilli();
