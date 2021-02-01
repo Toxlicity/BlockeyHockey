@@ -20,6 +20,7 @@ public interface Permissions {
     // Individual permission nodes
     String HELP = ROOT + ".help";       // basic help notes for the hockey plugin
     String DEBUG = ROOT + ".debug";     // view and toggle debug messages in chat
+    String PUCK = ROOT + ".puck";       // spawn a puck
 
     // Role-specific permission nodes
     Permission DEFAULT =

@@ -32,7 +32,9 @@ public class Debugger {
         Bukkit.broadcastMessage(ChatColor.BOLD + "" +
                 ChatColor.GRAY + "[" + type.getColor() + type.getLabel() + ChatColor.GRAY + "] "
                  + type.getColor() + message);
-        Debugger.console(message, type);
+        if (Bukkit.getOnlinePlayers().isEmpty()) {
+            Debugger.console(message, type);
+        }
     }
 
     /**

@@ -35,6 +35,7 @@ public class RinkManager {
      */
     private void constructRinks() {
         if (RINKS_CONFIG != null) {
+            int numRinks = 0;
             for (String key : RINKS_CONFIG.getKeys(false)) {
                 rinks.add(
                     new Rink(plugin,
@@ -48,8 +49,11 @@ public class RinkManager {
                              )
                     )
                 );
+                numRinks++;
             }
+            Debugger.debug("Successfully created " + numRinks + " rink(s)!", DebugMessage.SUCCESS);
         } else {
+            plugin.numErrors++;
             Debugger.debug("No rinks were found in the config! Add at least one rink.", DebugMessage.ERROR);
         }
     }

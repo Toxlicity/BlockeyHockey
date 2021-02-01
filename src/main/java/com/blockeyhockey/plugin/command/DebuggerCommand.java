@@ -17,7 +17,7 @@ public class DebuggerCommand {
         desc = "Toggle debug messages in chat and console.",
         perms = Permissions.DEBUG
     )
-    public void debugger(CommandSender sender) {
+    public void debugger() {
         Debugger.toggleDebug();
     }
 }
