@@ -13,10 +13,11 @@ public class HockeyPlayer {
 
     private final BlockeyHockey plugin;
 
+    /** The actual Minecraft player that is this {@link HockeyPlayer}. */
     private final Player player;
 
-    private Position position;
-    private int stickPower;     // the player's stick power (1-3)
+    private Position position;      // the player's hockey position (i.e. offense)
+    private int stickPower;         // the player's stick power (1-3)
 
     /**
      * Creates a {@link HockeyPlayer}.
