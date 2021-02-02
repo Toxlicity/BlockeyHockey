@@ -13,7 +13,7 @@ import app.ashcon.intake.Command;
  */
 public class Debugger {
 
-    private static boolean isDebug;
+    private static boolean isDebug;     // the toggle to determine if debug messages should be sent
 
     /**
      * Send an informative debug message in the chat and console.
