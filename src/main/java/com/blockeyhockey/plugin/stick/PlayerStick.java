@@ -32,12 +32,17 @@ public class PlayerStick extends HockeyStick {
      * @return the power after cycling.
      */
     @Override
-    public int cycle() {
+    public int cycleStickPower() {
        if (stickPower < 3) {
            stickPower++;
        } else {
            stickPower = 1;
        }
        return stickPower;
+    }
+
+    @Override
+    public void resetStickPower() {
+        stickPower = 1;
     }
 }

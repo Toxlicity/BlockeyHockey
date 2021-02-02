@@ -10,5 +10,7 @@ public abstract class HockeyStick {
     StickColor color;       // the color of the hockey stick
     int stickPower;         // the power of the stick (knockback)
 
-    public abstract int cycle();
+    public abstract int cycleStickPower();
+
+    public abstract void resetStickPower();
 }

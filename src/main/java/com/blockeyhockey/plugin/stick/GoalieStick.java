@@ -13,12 +13,17 @@ public class GoalieStick extends HockeyStick {
 
 
     @Override
-    public int cycle() {
+    public int cycleStickPower() {
         if (stickPower < 2) {
             stickPower++;
         } else {
             stickPower = 1;
         }
         return stickPower;
+    }
+
+    @Override
+    public void resetStickPower() {
+        stickPower = 1;
     }
 }
