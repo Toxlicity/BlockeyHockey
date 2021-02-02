@@ -23,6 +23,4 @@ public class Rink {
         this.rinkDimension = rinkDimension;
         this.gameManager = new HockeyGameManager(this, plugin);
     }
-
-
 }
