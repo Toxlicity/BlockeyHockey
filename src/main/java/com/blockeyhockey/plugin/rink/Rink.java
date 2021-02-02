@@ -6,6 +6,7 @@ import com.blockeyhockey.plugin.player.HockeyPlayer;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 
 /**
  * This object holds information about a hockey rink.
@@ -21,7 +22,7 @@ public class Rink {
 
     private final HockeyGameManager gameManager;        // the rink's game manager
 
-    private final ArrayList<HockeyPlayer> hockeyPlayers = new ArrayList<>();
+    private final HashSet<HockeyPlayer> hockeyPlayers = new HashSet<>();
 
     /**
      * Create a hockey rink.
@@ -32,5 +33,13 @@ public class Rink {
         this.plugin = plugin;
         this.rinkDimension = rinkDimension;
         this.gameManager = new HockeyGameManager(this, plugin);
+    }
+
+    /**
+     * Get all the {@link HockeyPlayer}s in this rink.
+     * @return an {@link ArrayList} of {@link HockeyPlayer}s.
+     */
+    public ArrayList<HockeyPlayer> getHockeyPlayers() {
+        return new ArrayList<>(hockeyPlayers);
     }
 }
