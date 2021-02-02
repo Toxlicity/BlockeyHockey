@@ -45,10 +45,11 @@ public class GameClock {
     private void tick() {
         gameClockTask = Bukkit.getScheduler().runTaskTimerAsynchronously(plugin, () -> {
             // if time remains on the clock, continue to count down.
-            if (milliseconds > 0) {
+            if (milliseconds > 0 && isRunning) {
                 milliseconds -= 50;     // subtract 50 milliseconds every tick
             } else {
                 // clock reached zero
+                stopClock();
             }
         }, 0L, 0L);
     }
