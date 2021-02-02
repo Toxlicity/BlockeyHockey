@@ -30,8 +30,8 @@ public enum DebugMessage {
      */
     ERROR("ERROR", ChatColor.RED);
 
-    private final String label;
-    private final ChatColor color;
+    private final String label;         // the label is displayed in front of the debug message
+    private final ChatColor color;      // the color of the label and message text
 
     DebugMessage(@NotNull final String label, @NotNull final ChatColor color) {
         this.label = label;
