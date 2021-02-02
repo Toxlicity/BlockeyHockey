@@ -15,6 +15,7 @@ public class HockeyPlayer {
 
     private final Player player;
 
+    private Position position;
     private int stickPower;     // the player's stick power (1-3)
 
     /**
