@@ -13,12 +13,12 @@ import org.jetbrains.annotations.NotNull;
  */
 public class HockeyGameManager {
 
-    BlockeyHockey plugin;
+    private final BlockeyHockey plugin;
 
-    Rink rink;                          // the rink this game manager belongs to
-    PeriodManager periodManager;        // this manages the period
-    GameClock gameClock;                // this manages the game time
-    GamePhase gamePhase;                // the phase of the game
+    private final Rink rink;                          // the rink this game manager belongs to
+    private final PeriodManager periodManager;        // this manages the period
+    private final GameClock gameClock;                // this manages the game time
+    private final GamePhase gamePhase;                // the phase of the game
 
     /**
      * Create the {@link HockeyGameManager}.
@@ -26,9 +26,18 @@ public class HockeyGameManager {
      * @param plugin The plugin's main instance.
      */
     public HockeyGameManager(@NotNull final Rink rink, @NotNull final BlockeyHockey plugin) {
+        this.rink = rink;
         this.plugin = plugin;
         this.periodManager = new PeriodManager();
         this.gameClock = new GameClock(plugin);
         this.gamePhase = GamePhase.PREGAME;
+    }
+
+    /**
+     * Get the {@link PeriodManager} that this {@link HockeyGameManager} is using.
+     * @return the {@link PeriodManager}.
+     */
+    public PeriodManager getPeriodManager() {
+        return periodManager;
     }
 }
