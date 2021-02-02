@@ -42,4 +42,28 @@ public class Rink {
     public ArrayList<HockeyPlayer> getHockeyPlayers() {
         return new ArrayList<>(hockeyPlayers);
     }
+
+    /**
+     * Add a {@link HockeyPlayer} to the {@link Rink}'s list of players.
+     * @param hockeyPlayer The hockey player to add.
+     * @return true if the hockey player was added; false if the player was not added.
+     */
+    public boolean addHockeyPlayer(HockeyPlayer hockeyPlayer) {
+        return hockeyPlayers.add(hockeyPlayer);
+    }
+
+    /**
+     * Remove a {@link HockeyPlayer} from the {@link Rink}'s list of players.
+     * @param hockeyPlayer The hockey player to remove.
+     */
+    public void removeHockeyPlayer(HockeyPlayer hockeyPlayer) {
+        hockeyPlayers.remove(hockeyPlayer);
+    }
+
+    /**
+     * Remove all {@link HockeyPlayer}s from the {@link Rink}'s list of players.
+     */
+    public void removeAllHockeyPlayers() {
+        hockeyPlayers.clear();
+    }
 }
