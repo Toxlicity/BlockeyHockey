@@ -16,6 +16,8 @@ public class HockeyPlayer {
     /** The actual Minecraft player that is this {@link HockeyPlayer}. */
     private final Player player;
 
+    private final PlayerGameStatistic playerGameStatistic;      // player stats for a single game
+
     private Position position;      // the player's hockey position (i.e. offense)
     private int stickPower;         // the player's stick power (1-3)
 
@@ -27,6 +29,7 @@ public class HockeyPlayer {
     public HockeyPlayer(@NotNull final Player player, @NotNull final BlockeyHockey plugin) {
         this.player = player;
         this.plugin = plugin;
+        this.playerGameStatistic = new PlayerGameStatistic();
     }
 
     /**
