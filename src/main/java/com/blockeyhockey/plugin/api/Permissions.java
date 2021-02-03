@@ -21,6 +21,7 @@ public interface Permissions {
     String HELP = ROOT + ".help";       // basic help notes for the hockey plugin
     String DEBUG = ROOT + ".debug";     // view and toggle debug messages in chat
     String PUCK = ROOT + ".puck";       // spawn a puck
+    String JOIN = ROOT + ".join";       // join a rink/game
 
     // Role-specific permission nodes
     Permission DEFAULT =
@@ -29,6 +30,7 @@ public interface Permissions {
             PermissionDefault.TRUE,
             new ImmutableMap.Builder<String, Boolean>()
                 .put(HELP, true)
+                .put(JOIN, true)
                 .build());
 
     Permission MODERATOR =

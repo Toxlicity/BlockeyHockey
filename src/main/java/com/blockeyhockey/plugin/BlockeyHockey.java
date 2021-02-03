@@ -4,6 +4,7 @@ import app.ashcon.intake.bukkit.BukkitIntake;
 import app.ashcon.intake.bukkit.graph.BasicBukkitCommandGraph;
 import com.blockeyhockey.plugin.api.Permissions;
 import com.blockeyhockey.plugin.command.DebuggerCommand;
+import com.blockeyhockey.plugin.command.JoinCommand;
 import com.blockeyhockey.plugin.command.PuckCommand;
 import com.blockeyhockey.plugin.listeners.BasicListener;
 import com.blockeyhockey.plugin.player.HockeyPlayerManager;
@@ -35,12 +36,8 @@ public final class BlockeyHockey extends JavaPlugin {
         Permissions.registerAll();
         // register listener classes
         new BasicListener(this);
-        printLoadedMessage();
-    }
-
-    @Override
-    public void onLoad() {
         registerCommands();
+        printLoadedMessage();
     }
 
     /**
@@ -51,6 +48,7 @@ public final class BlockeyHockey extends JavaPlugin {
         // all of the commands to register
         cmdGraph.getRootDispatcherNode().registerCommands(new DebuggerCommand());
         cmdGraph.getRootDispatcherNode().registerCommands(new PuckCommand());
+        cmdGraph.getRootDispatcherNode().registerCommands(new JoinCommand(this));
         new BukkitIntake(this, cmdGraph).register();
     }
 

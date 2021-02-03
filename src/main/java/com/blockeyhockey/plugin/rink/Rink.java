@@ -18,6 +18,7 @@ public class Rink {
 
     private final BlockeyHockey plugin;
 
+    private final String rinkName;                      // the unique name of the rink
     private final RinkDimension rinkDimension;          // the rink's dimensions
 
     private final HockeyGameManager gameManager;        // the rink's game manager
@@ -29,9 +30,11 @@ public class Rink {
      * @param plugin The plugin's main instance.
      * @param rinkDimension The dimensions for the rink.
      */
-    public Rink(@NotNull final BlockeyHockey plugin, @NotNull final RinkDimension rinkDimension) {
+    public Rink(@NotNull final BlockeyHockey plugin, @NotNull final RinkDimension rinkDimension,
+                @NotNull final String rinkName) {
         this.plugin = plugin;
         this.rinkDimension = rinkDimension;
+        this.rinkName = rinkName;
         this.gameManager = new HockeyGameManager(this, plugin);
     }
 

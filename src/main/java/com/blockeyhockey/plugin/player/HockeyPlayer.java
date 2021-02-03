@@ -1,6 +1,7 @@
 package com.blockeyhockey.plugin.player;
 
 import com.blockeyhockey.plugin.BlockeyHockey;
+import com.blockeyhockey.plugin.rink.Rink;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 
@@ -18,6 +19,7 @@ public class HockeyPlayer {
 
     private final PlayerGameStatistic playerGameStatistic;      // player stats for a single game
 
+    private Rink rink;              // the rink that the player is at (null is not at a rink)
     private Position position;      // the player's hockey position (i.e. offense)
     private int stickPower;         // the player's stick power (1-3)
 
@@ -38,5 +40,21 @@ public class HockeyPlayer {
      */
     public Player getPlayer() {
         return player;
+    }
+
+    /**
+     * Get the {@link Rink} that the player is currently in.
+     * @return the {@link Rink} where the player is.
+     */
+    public Rink getRink() {
+        return rink;
+    }
+
+    /**
+     * Set the {@link Rink} of the player.
+     * @param rink The rink to set.
+     */
+    public void setRink(Rink rink) {
+        this.rink = rink;
     }
 }

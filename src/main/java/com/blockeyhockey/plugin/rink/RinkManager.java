@@ -6,6 +6,7 @@ import com.blockeyhockey.utils.debugger.Debugger;
 import org.bukkit.configuration.ConfigurationSection;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * The {@link RinkManager} builds and stores all the {@link Rink}s in the world.
@@ -16,7 +17,7 @@ public class RinkManager {
 
     private final BlockeyHockey plugin;
 
-    private final ArrayList<Rink> rinks = new ArrayList<>();
+    private final HashMap<String, Rink> rinks = new HashMap<>();    // key = rink name | value = Rink
 
     private final ConfigurationSection RINKS_CONFIG;
 
@@ -37,19 +38,26 @@ public class RinkManager {
         if (RINKS_CONFIG != null) {
             int numRinks = 0;
             for (String key : RINKS_CONFIG.getKeys(false)) {
-                rinks.add(
-                    new Rink(plugin,
-                             new RinkDimension(
-                                 RINKS_CONFIG.getDouble(key + ".x1"),
-                                 RINKS_CONFIG.getDouble(key + ".y1"),
-                                 RINKS_CONFIG.getDouble(key + ".z1"),
-                                 RINKS_CONFIG.getDouble(key + ".x2"),
-                                 RINKS_CONFIG.getDouble(key + ".y2"),
-                                 RINKS_CONFIG.getDouble(key + ".z2")
-                             )
-                    )
-                );
-                numRinks++;
+                String rinkName = RINKS_CONFIG.getString(key + ".name");    // get rink's name
+                if (rinkName != null) {                                        // check that it's not null
+                    rinks.put( rinkName.toLowerCase(),
+                        new Rink(plugin,
+                                 new RinkDimension(
+                                     RINKS_CONFIG.getDouble(key + ".x1"),
+                                     RINKS_CONFIG.getDouble(key + ".y1"),
+                                     RINKS_CONFIG.getDouble(key + ".z1"),
+                                     RINKS_CONFIG.getDouble(key + ".x2"),
+                                     RINKS_CONFIG.getDouble(key + ".y2"),
+                                     RINKS_CONFIG.getDouble(key + ".z2")
+                                 ),
+                                 rinkName
+                        )
+                    );
+                    numRinks++;
+                } else {
+                    Debugger.debug("Make sure each rink has a name.", DebugMessage.ERROR);
+                }
+
             }
             Debugger.debug("Successfully created " + numRinks + " rink(s)!", DebugMessage.SUCCESS);
         } else {
@@ -63,6 +71,15 @@ public class RinkManager {
      * @return an array of rinks loaded in the world.
      */
     public Rink[] getRinks() {
-        return rinks.toArray(new Rink[0]);
+        return rinks.values().toArray(new Rink[0]);
+    }
+
+    /**
+     * Get a {@link Rink} by the rink's name.
+     * @param rinkName The name of the {@link Rink}.
+     * @return the {@link Rink}.
+     */
+    public Rink getRink(String rinkName) {
+        return rinks.get(rinkName.toLowerCase());
     }
 }
