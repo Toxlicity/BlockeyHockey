@@ -3,7 +3,6 @@ package com.blockeyhockey.plugin.command;
 import app.ashcon.intake.Command;
 import com.blockeyhockey.plugin.api.Permissions;
 import com.blockeyhockey.utils.debugger.Debugger;
-import org.bukkit.command.CommandSender;
 
 /**
  * The command to toggle on and off debug messages.

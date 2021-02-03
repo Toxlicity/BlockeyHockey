@@ -6,8 +6,6 @@ import org.bukkit.Bukkit;
 import org.bukkit.scheduler.BukkitTask;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.concurrent.TimeUnit;
-
 /**
  * The clock for the game.
  * @author harvanchik
